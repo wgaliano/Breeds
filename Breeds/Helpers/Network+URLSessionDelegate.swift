@@ -48,12 +48,10 @@ extension Network: URLSessionDelegate {
                       body: (any Codable)? = nil)
     -> URLRequest? {
         urlComponent?.path = "/v1"+path
-        
         if let queryItems = queryItems {
             urlComponent?.queryItems = queryItems
         }
         guard let theURL = urlComponent?.url else { return nil }
-
         var request = URLRequest(url: theURL)
         request.httpMethod = method
         
@@ -76,15 +74,29 @@ extension Network: URLSessionDelegate {
     /// Decodes a JSON `Data` as an array of `Breed`.
     ///
     /// - Throws: `NetworkError`.
-    func decodeProducts(from data: Data) throws -> [Breed] {
+    func decodeBreeds(from data: Data) throws -> [Breed] {
         try decoder.decode([Breed].self, from: data)
     }
     
     /// Decodes a JSON `Data` as a `Breed`.
     ///
     /// - Throws: `NetworkError`.
-    func decodeProduct(from data: Data) throws -> Breed {
+    func decodeBreed(from data: Data) throws -> Breed {
         try decoder.decode(Breed.self, from: data)
+    }
+    
+    /// Decodes a JSON `Data` as an array of `Dogs`.
+    ///
+    /// - Throws: `NetworkError`.
+    func decodeDogs(from data: Data) throws -> [DogElement] {
+        try decoder.decode([DogElement].self, from: data)
+    }
+    
+    /// Decodes a JSON `Data` as a `Dog`.
+    ///
+    /// - Throws: `NetworkError`.
+    func decodeDog(from data: Data) throws -> DogElement {
+        try decoder.decode(DogElement.self, from: data)
     }
     
     /// Decodes a JSON `Data` as a `Bool`.

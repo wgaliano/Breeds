@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: - CatElement
+// MARK: - DogElement
 struct DogElement: Identifiable, Codable {
     let id: String
     let url: String

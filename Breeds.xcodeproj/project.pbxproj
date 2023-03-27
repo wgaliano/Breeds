@@ -17,6 +17,8 @@
 		3C69F38529D1F1D100EB7415 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69F38429D1F1D100EB7415 /* Breed.swift */; };
 		3C69F38729D1F22400EB7415 /* RandomDogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69F38629D1F22400EB7415 /* RandomDogViewModel.swift */; };
 		3C69F38929D1F22F00EB7415 /* FindBreedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69F38829D1F22F00EB7415 /* FindBreedViewModel.swift */; };
+		3C69F38B29D236B900EB7415 /* DogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69F38A29D236B900EB7415 /* DogDetailView.swift */; };
+		3C69F38D29D23DFF00EB7415 /* DogDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69F38C29D23DFF00EB7415 /* DogDetailViewModel.swift */; };
 		3CAEB68829D1EE2B005874B3 /* BreedsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAEB68729D1EE2B005874B3 /* BreedsApp.swift */; };
 		3CAEB68A29D1EE2B005874B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAEB68929D1EE2B005874B3 /* ContentView.swift */; };
 		3CAEB68C29D1EE2C005874B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CAEB68B29D1EE2C005874B3 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		3C69F38429D1F1D100EB7415 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		3C69F38629D1F22400EB7415 /* RandomDogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogViewModel.swift; sourceTree = "<group>"; };
 		3C69F38829D1F22F00EB7415 /* FindBreedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBreedViewModel.swift; sourceTree = "<group>"; };
+		3C69F38A29D236B900EB7415 /* DogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDetailView.swift; sourceTree = "<group>"; };
+		3C69F38C29D23DFF00EB7415 /* DogDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDetailViewModel.swift; sourceTree = "<group>"; };
 		3CAEB68429D1EE2B005874B3 /* Breeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAEB68729D1EE2B005874B3 /* BreedsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsApp.swift; sourceTree = "<group>"; };
 		3CAEB68929D1EE2B005874B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				3C69F38629D1F22400EB7415 /* RandomDogViewModel.swift */,
+				3C69F38C29D23DFF00EB7415 /* DogDetailViewModel.swift */,
 				3C69F38829D1F22F00EB7415 /* FindBreedViewModel.swift */,
 			);
 			path = ViewModels;
@@ -94,6 +99,7 @@
 				3CAEB68929D1EE2B005874B3 /* ContentView.swift */,
 				3C69F37E29D1F11C00EB7415 /* RandomDogView.swift */,
 				3C69F38029D1F19600EB7415 /* FindBreedView.swift */,
+				3C69F38A29D236B900EB7415 /* DogDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,11 +219,13 @@
 				3CAEB68A29D1EE2B005874B3 /* ContentView.swift in Sources */,
 				3C69F38129D1F19600EB7415 /* FindBreedView.swift in Sources */,
 				3C69F37D29D1F00C00EB7415 /* NetworkError.swift in Sources */,
+				3C69F38B29D236B900EB7415 /* DogDetailView.swift in Sources */,
 				3C69F38729D1F22400EB7415 /* RandomDogViewModel.swift in Sources */,
 				3CAEB68829D1EE2B005874B3 /* BreedsApp.swift in Sources */,
 				3C69F37729D1EFA900EB7415 /* ResponseHandler.swift in Sources */,
 				3C69F38529D1F1D100EB7415 /* Breed.swift in Sources */,
 				3C69F38929D1F22F00EB7415 /* FindBreedViewModel.swift in Sources */,
+				3C69F38D29D23DFF00EB7415 /* DogDetailViewModel.swift in Sources */,
 				3C69F38329D1F1C900EB7415 /* DogElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

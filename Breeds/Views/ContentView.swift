@@ -12,12 +12,12 @@ struct ContentView: View {
         TabView {
             TodayView()
                 .tabItem {
-                    Label("Today", systemImage: "list.dash")
+                    Label("Pick the dog", systemImage: "pawprint")
                 }
             
             FindBreedView()
                 .tabItem {
-                    Label("Search", systemImage: "square.and.pencil")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
         }
     }

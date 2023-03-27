@@ -30,6 +30,20 @@ class Network: NSObject {
             method: "GET",
             path: path
         )
-        return perform(request: request, decoder: decodeProducts(from:))
+        return perform(request: request, decoder: decodeBreeds(from:))
+    }
+    
+    func listDogsPerBreed(path: String, breedId: Int) -> AnyPublisher<[DogElement], NetworkError> {
+        let request = buildRequest(
+            method: "GET",
+            path: path,
+            queryItems: [
+                URLQueryItem(
+                    name: "breed_ids",
+                    value: "\(breedId)"
+                )
+            ]
+        )
+        return perform(request: request, decoder: decodeDogs(from:))
     }
 }
