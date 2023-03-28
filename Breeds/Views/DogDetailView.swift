@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DogDetailView: View {
-    var breedId: Int
+    var breed: Breed
     @StateObject var vm = DogDetailViewModel()
     
     var body: some View {
@@ -25,21 +25,26 @@ struct DogDetailView: View {
                             } placeholder: {
                                 ProgressView()
                             }
-                            .frame(width: 250, height: 250)
+                            .frame(width: 300, height: 300)
+                            .scaledToFit()
+                            .padding()
                         }
                     }
                 }
+                Text(breed.temperament ?? "")
+                    .padding()
             }
+            .navigationTitle(breed.name)
             .task {
-                vm.getDogsPerBreed(breedId: breedId)
+                vm.getDogsPerBreed(breedId: breed.id)
             }
             .padding(.vertical, 150)
         }
     }
 }
 
-struct DogDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DogDetailView(breedId: 1)
-    }
-}
+//struct DogDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DogDetailView(breed: B)
+//    }
+//}

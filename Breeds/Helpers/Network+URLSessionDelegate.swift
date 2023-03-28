@@ -52,6 +52,7 @@ extension Network: URLSessionDelegate {
             urlComponent?.queryItems = queryItems
         }
         guard let theURL = urlComponent?.url else { return nil }
+        print(theURL)
         var request = URLRequest(url: theURL)
         request.httpMethod = method
         

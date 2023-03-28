@@ -16,7 +16,7 @@ struct FindBreedView: View {
                 if(!vm.breeds.isEmpty) {
                     List(vm.breeds, id: \.id) { breed in
                         NavigationLink {
-                            DogDetailView(breedId: breed.id)
+                            DogDetailView(breed: breed)
                         } label: {
                             Text(breed.name)
                         }

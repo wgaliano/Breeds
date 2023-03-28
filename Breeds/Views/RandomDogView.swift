@@ -13,25 +13,26 @@ struct TodayView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView {
-                    if(!vm.dogs.isEmpty) {
-                        ForEach(vm.dogs, id: \.?.id) { dog in
-                            AsyncImage(url: URL(string: dog!.url)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 250, height: 250)
+                if(!vm.randomDogs.isEmpty) {
+                    ForEach(vm.randomDogs, id: \.id) { dog in
+                        AsyncImage(url: URL(string: dog.url)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                            
+                        } placeholder: {
+                            ProgressView()
                         }
+                        .frame(width: 250, height: 250)
+                        .scaledToFit()
+                        .cornerRadius(32)
+                        .padding()
                     }
                 }
             }
             .navigationTitle("Dog of the day")
             .task {
-                await vm.getPhotos()
+                vm.getRandomDog()
             }
             .padding(.vertical, 150)
         }

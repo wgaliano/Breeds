@@ -25,7 +25,15 @@ class Network: NSObject {
     /// Encoder for JSON `Data`.
     lazy var encoder = JSONEncoder()
     
-    func list(path: String) -> AnyPublisher<[Breed], NetworkError> {
+    func fetchRandomDog(path: String) -> AnyPublisher<[DogElement], NetworkError> {
+        let request = buildRequest(
+            method: "GET",
+            path: path
+        )
+        return perform(request: request, decoder: decodeDogs(from:))
+    }
+    
+    func fetchBreeds(path: String) -> AnyPublisher<[Breed], NetworkError> {
         let request = buildRequest(
             method: "GET",
             path: path
@@ -33,7 +41,7 @@ class Network: NSObject {
         return perform(request: request, decoder: decodeBreeds(from:))
     }
     
-    func listDogsPerBreed(path: String, breedId: Int) -> AnyPublisher<[DogElement], NetworkError> {
+    func fetchDogsPerBreed(path: String, breedId: Int) -> AnyPublisher<[DogElement], NetworkError> {
         let request = buildRequest(
             method: "GET",
             path: path,

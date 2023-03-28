@@ -14,7 +14,7 @@ class FindBreedViewModel: ObservableObject {
     private var observers: Set<AnyCancellable> = []
     
     func getBreeds() {
-        Network.shared.list(path: breedPath)
+        Network.shared.fetchBreeds(path: breedPath)
             .sink {
                 completion in
                 switch completion {

@@ -14,7 +14,7 @@ class DogDetailViewModel: ObservableObject {
     private var observers: Set<AnyCancellable> = []
     
     func getDogsPerBreed(breedId: Int) {
-        Network.shared.listDogsPerBreed(path: breedIdPath, breedId: breedId)
+        Network.shared.fetchDogsPerBreed(path: breedIdPath, breedId: breedId)
             .sink {
                 completion in
                 switch completion {
