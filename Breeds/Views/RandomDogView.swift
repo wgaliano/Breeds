@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TodayView: View {
+struct RandomDogView: View {
     @StateObject var vm = RandomDogViewModel()
     
     var body: some View {
@@ -23,25 +23,37 @@ struct TodayView: View {
                         } placeholder: {
                             ProgressView()
                         }
-                        .frame(width: 250, height: 250)
                         .scaledToFit()
-                        .cornerRadius(32)
+                        .cornerRadius(20)
                         .padding()
                     }
                 }
             }
-            .navigationTitle("Dog of the day")
+            .navigationTitle("Pick your dog")
             .task {
                 vm.getRandomDog()
+            }
+            .alert(isPresented: $vm.connectionOff) {
+                Alert(
+                    title: Text("Are you sure you want to delete this?"),
+                    message: Text("There is no undo"),
+                    primaryButton: .destructive(Text("Try again")) {
+                        vm.getRandomDog()
+                        vm.connectionOff.toggle()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
             .padding(.vertical, 150)
         }
     }
 }
 
-struct TodayView_Previews: PreviewProvider {
+
+
+struct RandomDogView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayView()
+        RandomDogView()
     }
 }
 

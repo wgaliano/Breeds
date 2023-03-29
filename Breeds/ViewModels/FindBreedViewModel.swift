@@ -19,7 +19,8 @@ class FindBreedViewModel: ObservableObject {
     
     init() {
         $searchText
-            .debounce(for: .milliseconds(800), scheduler: RunLoop.main) // debounces the string publisher, such that it delays the process of sending request to remote server.
+            /// debounces the string publisher, such that it delays the process of sending request to remote server.
+            .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
             .removeDuplicates()
             .map({ (string) -> String? in
                 if string.count < 1 {
@@ -28,10 +29,10 @@ class FindBreedViewModel: ObservableObject {
                 }
                 
                 return string
-            }) // prevents sending numerous requests and sends nil if the count of the characters is less than 1.
-            .compactMap{ $0 } // removes the nil values so the search string does not get passed down to the publisher chain
+            }) /// prevents sending numerous requests and sends nil if the count of the characters is less than 1.
+            /// removes the nil values so the search string does not get passed down to the publisher chain
+            .compactMap{ $0 }
             .sink { (_) in
-                //
             } receiveValue: { [self] (searchField) in
                 print(searchField)
                 searchBreedByText(searchText: searchField)

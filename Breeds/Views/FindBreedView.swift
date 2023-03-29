@@ -17,7 +17,7 @@ struct FindBreedView: View {
                     if(!vm.allBreeds.isEmpty) {
                         List(vm.allBreeds, id: \.id) { breed in
                             NavigationLink {
-                                DogDetailView(breedName: breed.name, breedTemperament: breed.temperament ?? "no available temperament", breedId: breed.id)
+                                DogDetailView(breedName: breed.name, breedGroup: breed.breedGroup?.rawValue ?? "Undefined", breedTemperament: breed.temperament ?? "Undefined", lifeSpan: breed.lifeSpan, breedId: breed.id)
                             } label: {
                                 Text(breed.name)
                             }
@@ -29,7 +29,7 @@ struct FindBreedView: View {
                     if(!vm.searchedBreeds.isEmpty) {
                         List(vm.searchedBreeds, id: \.id) { searchedBreed in
                             NavigationLink {
-                                DogDetailView(breedName: searchedBreed.name, breedTemperament: searchedBreed.temperament ?? "no available temperament", breedId: searchedBreed.id)
+                                DogDetailView(breedName: searchedBreed.name, breedGroup: searchedBreed.breedGroup?.rawValue ?? "Undefined", breedTemperament: searchedBreed.temperament ?? "Undefined", lifeSpan: searchedBreed.lifeSpan, breedId: searchedBreed.id)
                             } label: {
                                 Text(searchedBreed.name)
                             }
@@ -41,9 +41,6 @@ struct FindBreedView: View {
             .task {
                 vm.getBreeds()
             }
-//            .task {
-//                vm.searchBreedByText(searchText: vm.searchText)
-//            }
         }
         .searchable(text: $vm.searchText)
     }

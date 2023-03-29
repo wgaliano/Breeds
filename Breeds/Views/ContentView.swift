@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            TodayView()
+            RandomDogView()
                 .tabItem {
                     Label("Pick the dog", systemImage: "pawprint")
                 }

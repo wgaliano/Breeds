@@ -17,7 +17,7 @@ struct Breed: Codable {
     let lifeSpan: String
     let temperament, origin: String?
     let referenceImageID: String
-    let image: Image
+    let image: BreedImage
     let countryCode: CountryCode?
     let description, history: String?
 
@@ -58,7 +58,7 @@ struct Eight: Codable {
 }
 
 // MARK: - Image
-struct Image: Codable {
+struct BreedImage: Codable {
     let id: String
     let width, height: Int
     let url: String
