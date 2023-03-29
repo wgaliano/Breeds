@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct DogDetailView: View {
-    var breed: Breed
+    var breedName: String
+    var breedTemperament: String
+    var breedId: Int
     @StateObject var vm = DogDetailViewModel()
     
     var body: some View {
@@ -31,12 +33,12 @@ struct DogDetailView: View {
                         }
                     }
                 }
-                Text(breed.temperament ?? "")
+                Text(breedTemperament)
                     .padding()
             }
-            .navigationTitle(breed.name)
+            .navigationTitle(breedName)
             .task {
-                vm.getDogsPerBreed(breedId: breed.id)
+                vm.getDogsPerBreed(breedId: breedId)
             }
             .padding(.vertical, 150)
         }

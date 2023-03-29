@@ -93,11 +93,18 @@ extension Network: URLSessionDelegate {
         try decoder.decode([DogElement].self, from: data)
     }
     
-    /// Decodes a JSON `Data` as a `Dog`.
+    /// Decodes a JSON `Data` as a `DogElement`.
     ///
     /// - Throws: `NetworkError`.
     func decodeDog(from data: Data) throws -> DogElement {
         try decoder.decode(DogElement.self, from: data)
+    }
+    
+    /// Decodes a JSON `Data` as a `SearchedBreedElement`.
+    ///
+    /// - Throws: `NetworkError`.
+    func decodeSearchedBreeds(from data: Data) throws -> [SearchedBreedElement] {
+        try decoder.decode([SearchedBreedElement].self, from: data)
     }
     
     /// Decodes a JSON `Data` as a `Bool`.

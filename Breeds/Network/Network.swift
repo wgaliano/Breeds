@@ -54,4 +54,18 @@ class Network: NSObject {
         )
         return perform(request: request, decoder: decodeDogs(from:))
     }
+    
+    func fetchBreedByText(path: String, breedName: String) -> AnyPublisher<[SearchedBreedElement], NetworkError> {
+        let request = buildRequest(
+            method: "GET",
+            path: path,
+            queryItems: [
+                URLQueryItem(
+                    name: "name",
+                    value: "\(breedName)"
+                )
+            ]
+        )
+        return perform(request: request, decoder: decodeSearchedBreeds(from:))
+    }
 }
