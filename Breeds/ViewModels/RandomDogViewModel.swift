@@ -7,10 +7,10 @@
 
 import Foundation
 import Combine
+import Network
 
 class RandomDogViewModel: ObservableObject {
     @Published var randomDogs = [DogElement]()
-    @Published var connectionOff = false
     private var randomDogPath = "/images/search"
     private var observers: Set<AnyCancellable> = []
     
@@ -21,7 +21,6 @@ class RandomDogViewModel: ObservableObject {
                 switch completion {
                 case .failure(let error):
                     let error = ResponseHandler.shared.mapError(error)
-                    self.connectionOff.toggle()
                     print(error.localizedDescription)
                 case .finished:
                     print("\(#function) success")

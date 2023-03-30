@@ -12,20 +12,15 @@ struct RandomDogView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.white)
+                    .frame(width: 320, height: 500)
+                    .shadow(color: .gray, radius: 2, x: 0, y: 0)
+                
                 if(!vm.randomDogs.isEmpty) {
                     ForEach(vm.randomDogs, id: \.id) { dog in
-                        AsyncImage(url: URL(string: dog.url)) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                            
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .scaledToFit()
-                        .cornerRadius(20)
-                        .padding()
+                        RandomCardView(dogImageURL: dog.url)
                     }
                 }
             }
@@ -33,18 +28,6 @@ struct RandomDogView: View {
             .task {
                 vm.getRandomDog()
             }
-            .alert(isPresented: $vm.connectionOff) {
-                Alert(
-                    title: Text("Are you sure you want to delete this?"),
-                    message: Text("There is no undo"),
-                    primaryButton: .destructive(Text("Try again")) {
-                        vm.getRandomDog()
-                        vm.connectionOff.toggle()
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
-            .padding(.vertical, 150)
         }
     }
 }

@@ -28,7 +28,13 @@ class Network: NSObject {
     func fetchRandomDog(path: String) -> AnyPublisher<[DogElement], NetworkError> {
         let request = buildRequest(
             method: "GET",
-            path: path
+            path: path,
+            queryItems: [
+                URLQueryItem(
+                    name: "limit",
+                    value: "\(10)"
+                )
+            ]
         )
         return perform(request: request, decoder: decodeDogs(from:))
     }
@@ -36,7 +42,13 @@ class Network: NSObject {
     func fetchBreeds(path: String) -> AnyPublisher<[Breed], NetworkError> {
         let request = buildRequest(
             method: "GET",
-            path: path
+            path: path,
+            queryItems: [
+                URLQueryItem(
+                    name: "limit",
+                    value: "\(180)"
+                )
+            ]
         )
         return perform(request: request, decoder: decodeBreeds(from:))
     }
@@ -68,4 +80,5 @@ class Network: NSObject {
         )
         return perform(request: request, decoder: decodeSearchedBreeds(from:))
     }
+    
 }

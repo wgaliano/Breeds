@@ -22,6 +22,7 @@
 		3C69F38F29D427E500EB7415 /* SearchedBreedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C69F38E29D427E500EB7415 /* SearchedBreedElement.swift */; };
 		3CA5536D29D44C890005CCE0 /* CardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA5536C29D44C890005CCE0 /* CardBack.swift */; };
 		3CA5536F29D44DAF0005CCE0 /* CardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA5536E29D44DAF0005CCE0 /* CardFront.swift */; };
+		3CA5537129D644620005CCE0 /* RandomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA5537029D644620005CCE0 /* RandomCardView.swift */; };
 		3CAEB68829D1EE2B005874B3 /* BreedsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAEB68729D1EE2B005874B3 /* BreedsApp.swift */; };
 		3CAEB68A29D1EE2B005874B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAEB68929D1EE2B005874B3 /* ContentView.swift */; };
 		3CAEB68C29D1EE2C005874B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CAEB68B29D1EE2C005874B3 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		3C69F38E29D427E500EB7415 /* SearchedBreedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBreedElement.swift; sourceTree = "<group>"; };
 		3CA5536C29D44C890005CCE0 /* CardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBack.swift; sourceTree = "<group>"; };
 		3CA5536E29D44DAF0005CCE0 /* CardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFront.swift; sourceTree = "<group>"; };
+		3CA5537029D644620005CCE0 /* RandomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCardView.swift; sourceTree = "<group>"; };
 		3CAEB68429D1EE2B005874B3 /* Breeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAEB68729D1EE2B005874B3 /* BreedsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsApp.swift; sourceTree = "<group>"; };
 		3CAEB68929D1EE2B005874B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				3C69F38A29D236B900EB7415 /* DogDetailView.swift */,
 				3CA5536C29D44C890005CCE0 /* CardBack.swift */,
 				3CA5536E29D44DAF0005CCE0 /* CardFront.swift */,
+				3CA5537029D644620005CCE0 /* RandomCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				3CA5536D29D44C890005CCE0 /* CardBack.swift in Sources */,
 				3C69F37F29D1F11C00EB7415 /* RandomDogView.swift in Sources */,
 				3C69F37B29D1F00300EB7415 /* Network.swift in Sources */,
+				3CA5537129D644620005CCE0 /* RandomCardView.swift in Sources */,
 				3C69F37929D1EFD100EB7415 /* Network+URLSessionDelegate.swift in Sources */,
 				3CAEB68A29D1EE2B005874B3 /* ContentView.swift in Sources */,
 				3C69F38129D1F19600EB7415 /* FindBreedView.swift in Sources */,
