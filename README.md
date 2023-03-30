@@ -10,7 +10,6 @@
 
 - [About](#about)
 - [Authors & contributors](#authors--contributors)
-- [License](#license)
 
 </details>
 
@@ -25,31 +24,6 @@ The app is built using the MVVM (Model-View-ViewModel) architecture pattern, wit
 
 This project is a great starting point for anyone looking to learn Combine in SwiftUI, or for those looking to build a simple app that uses network requests to fetch data from an API.
 
-If you have any questions or feedback, feel free to contact me at [your email here]. Thank you for checking out this project!
-
-
-<br />
-
-## Support
-
-Reach out to the maintainer at one of the following places:
-
-- [GitHub Discussions](https://github.com/developer-academy-unina/network-stack/discussions)
-- [GitHub issues](https://github.com/developer-academy-unina/network-stack/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
-- Contact a Mentor for any other help
-
-<br />
-
 ## Authors & contributors
 
-The original setup of this repository is by [Gianluca Orpello](https://github.com/gorpello).
-
-For a full list of all authors and contributors, see [the contributors page](https://github.com/developer-academy-unina/network-stack/contributors).
-
-<br />
-
-## License
-
-This project is licensed under the **MIT License**.
-
-See [LICENSE](LICENSE) for more information.
+The original setup of this repository is by [Walter Galiano](https://github.com/wgaliano).
