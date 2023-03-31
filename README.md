@@ -177,7 +177,89 @@ class RandomDogViewModel: ObservableObject {
 
 ## FindBreedViewModel
 ```Swift
+import Foundation
+import Combine
+
+class FindBreedViewModel: ObservableObject {
+    @Published var allBreeds = [Breed]()
+    @Published var searchedBreeds: [SearchedBreedElement] = []
+    private let breedPath = "/breeds"
+    private let searchBreedPath = "/breeds/search"
+    private var observers: Set<AnyCancellable> = []
+    
+    @Published var searchText: String = ""
+    
+    init() {
+        $searchText
+            /// debounces the string publisher, such that it delays the process of sending request to remote server.
+            .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .map({ (string) -> String? in
+                if string.count < 1 {
+                    self.searchedBreeds = []
+                    return nil
+                }
+                
+                return string
+            }) /// prevents sending numerous requests and sends nil if the count of the characters is less than 1.
+            /// removes the nil values so the search string does not get passed down to the publisher chain
+            .compactMap{ $0 }
+            .sink { (_) in
+            } receiveValue: { [self] (searchField) in
+                print(searchField)
+                searchBreedByText(searchText: searchField)
+            }.store(in: &observers)
+    }
+    
+    func getBreeds() {
+        Network.shared.fetchBreeds(path: breedPath)
+            .sink {
+                completion in
+                switch completion {
+                case .failure(let error):
+                    let error = ResponseHandler.shared.mapError(error)
+                    print(error.localizedDescription)
+                case .finished:
+                    print("\(#function) success")
+                }
+            } receiveValue: { [weak self] data in
+                self?.allBreeds = data
+            }
+            .store(in: &observers)
+    }
+    
+    func searchBreedByText(searchText: String) {
+        Network.shared.fetchBreedByText(path: searchBreedPath, breedName: searchText)
+            .sink {
+                completion in
+                switch completion {
+                case .failure(let error):
+                    let error = ResponseHandler.shared.mapError(error)
+                    print(error.localizedDescription)
+                case .finished:
+                    print("\(#function) success")
+                }
+            } receiveValue: { [weak self] data in
+                self?.searchedBreeds = data
+            }
+            .store(in: &observers)
+    }
+}
 ```
+<p>The <code>FindBreedViewModel</code> class is a ViewModel that is responsible for managing the state and data for the Find Breed feature. It uses the Combine framework to handle the network requests and updates the state accordingly. </p>
+<h3>Properties</h3>
+<ul>
+  <li><code>allBreeds: [Breed]</code> - An array of <code>Breed</code> objects that contains all the available dog breeds.</li>
+  <li><code>searchedBreeds: [SearchedBreedElement]</code> - An array of <code>SearchedBreedElement</code> objects that contains the dog breeds searched for by the user.</li>
+  <li><code>searchText: String</code> - A string that holds the search text entered by the user.</li>
+</ul>
+<h3>Methods</h3>
+<ul>
+  <li><code>getBreeds()</code> - A method that fetches all the dog breeds using the <code>fetchBreeds</code> method of the <code>Network</code> class.</li>
+  <li><code>searchBreedByText(searchText: String)</code> - A method that searches for a dog breed by name using the <code>fetchBreedByText</code> method of the <code>Network</code> class.</li>
+</ul>
+<h3>Initialization</h3>
+<p>The <code>FindBreedViewModel</code> class has an initializer that sets up the Combine pipeline to handle the search text entered by the user. It debounces the search text, removes duplicate values, and maps it to a new value. If the length of the string is less than 1, it sets the <code>searchedBreeds</code> array to an empty array. If the length of the string is greater than 1, it calls the <code>searchBreedByText</code> method to search for the dog breeds.</p>
 
 ## DogDetailViewModel
 ```Swift
