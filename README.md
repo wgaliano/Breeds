@@ -263,8 +263,44 @@ class FindBreedViewModel: ObservableObject {
 
 ## DogDetailViewModel
 ```Swift
-```
+import Foundation
+import Combine
 
+class DogDetailViewModel: ObservableObject {
+    @Published var filteredDogs = [DogElement]()
+    private var breedIdPath = "/images/search"
+    private var observers: Set<AnyCancellable> = []
+    
+    func getDogsPerBreed(breedId: Int) {
+        Network.shared.fetchDogsPerBreed(path: breedIdPath, breedId: breedId)
+            .sink {
+                completion in
+                switch completion {
+                case .failure(let error):
+                    let error = ResponseHandler.shared.mapError(error)
+                    print(error.localizedDescription)
+                case .finished:
+                    print("\(#function) success")
+                }
+            } receiveValue: { [weak self] data in
+                self?.filteredDogs = data
+            }
+            .store(in: &observers)
+    }
+}
+```
+  <p>This is a view model class that handles API requests for dog images based on the breed ID.</p>
+  <h3>Properties</h3>
+  <ul>
+    <li><code>filteredDogs</code>: An array of <code>DogElement</code> objects representing the filtered list of dogs for the selected breed.</li>
+    <li><code>breedIdPath</code>: A string representing the API endpoint for fetching dogs based on breed ID.</li>
+    <li><code>observers</code>: A set of <code>AnyCancellable</code> objects used to manage the API request.</li>
+  </ul>
+  <h3>Methods</h3>
+  <ul>
+    <li><code>getDogsPerBreed(breedId:)</code>: This method takes in an integer <code>breedId</code> as a parameter and fetches the list of dogs for that breed using the API request. Upon receiving the API response, it updates the <code>filteredDogs</code> property with the fetched data.</li>
+  </ul>
+  
 ## Authors & contributors
 
 The original setup of this repository is by [Walter Galiano](https://github.com/wgaliano).
