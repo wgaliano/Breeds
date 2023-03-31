@@ -13,7 +13,7 @@
   - [Network](#network)
   - [RandomDogViewModel](#random-dog-view-model)
   - [FindBreedViewModel](#find-breed-view-model)
-  - [DogDetailViewModel]
+  - [DogDetailViewModel](#dog-detail-view-model)
 - [Authors & contributors](#authors--contributors)
 
 </details>
